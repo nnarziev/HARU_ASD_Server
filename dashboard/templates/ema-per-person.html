@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" charset="utf-8">
+    <title>YouNoOne</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        h2 {
+            display: inline-block;
+        }
+
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            line-height: 1.5;
+            width: 100%;
+        }
+
+        #table_header th {
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            color: #369;
+            border-bottom: 3px solid #036;
+        }
+
+        #table_body th {
+            width: 150px;
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+            background: #f3f6f7;
+        }
+
+        #username_text {
+            display: block;
+            margin-bottom: 10px;
+            color: #ff0000;
+            text-align: center;
+        }
+
+        table td {
+            width: 350px;
+            padding: 10px;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1 style="display: block; margin-bottom: 10px; text-align: center"> YOU-NO-ONE DASHBOARD </h1>
+<h2 style="display: block; margin-bottom: 10px; text-align: center">EMA PAGE</h2>
+
+<h2 id="username_text">{{ username }}</h2>
+<hr>
+<table>
+    <tr id="table_header">
+        <th>Day no.</th>
+        <th>EMA order</th>
+        <th>interest</th>
+        <th>mood</th>
+        <th>sleep</th>
+        <th>fatigue</th>
+        <th>weight</th>
+        <th>worthlessness</th>
+        <th>concentrate</th>
+        <th>restlessness</th>
+        <th>suicide</th>
+        <th>expected time</th>
+        <th>responded time</th>
+    </tr>
+
+    {% for ema in ema_responses %}
+        <tr id="table_body">
+            <th>{{ ema.day_num }}</th>
+            <td>
+                {{ ema.ema_order }}
+            </td>
+            <td>
+                {% if ema.interest == -1 %}none{% else %}{{ ema.interest }}{% endif %}
+            </td>
+            <td>
+                {% if ema.mood == -1 %}none{% else %}{{ ema.mood }}{% endif %}
+            </td>
+            <td>
+                {% if ema.sleep == -1 %}none{% else %}{{ ema.sleep }}{% endif %}
+            </td>
+            <td>
+                {% if ema.fatigue == -1 %}none{% else %}{{ ema.fatigue }}{% endif %}
+            </td>
+            <td>
+                {% if ema.weight == -1 %}none{% else %}{{ ema.weight }}{% endif %}
+            </td>
+            <td>
+                {% if ema.worthlessness == -1 %}none{% else %}{{ ema.worthlessness }}{% endif %}
+            </td>
+            <td>
+                {% if ema.concentrate == -1 %}none{% else %}{{ ema.concentrate }}{% endif %}
+            </td>
+            <td>
+                {% if ema.restlessness == -1 %}none{% else %}{{ ema.restlessness }}{% endif %}
+            </td>
+            <td>
+                {% if ema.suicide == -1 %}none{% else %}{{ ema.suicide }}{% endif %}
+            </td>
+            <td>{{ ema.time_expected }}</td>
+            <td>{% if ema.time_responded == 0 %}none{% else %}{{ ema.time_responded }}{% endif %}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+
+</body>
+</html>
